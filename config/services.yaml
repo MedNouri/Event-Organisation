@@ -25,3 +25,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app_bundle.service.listener:
+        class: App\EventSubscriber\CalendarSubscriber
+        # arguments: [name: 'kernel.event_listener', event: 'fc_load_events', method: getSubscribedEvents]
