@@ -25,8 +25,15 @@
                 <td>{{ event.endAt ? event.endAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.location }}</td>
                 <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a href="{{ path('event_show', {'id': event.id}) }}">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-home"></i></button>
+                   </a>
+
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">
+
+                        <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+
+                    </a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +44,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_new') }}">Create new</a>
 {% endblock %}

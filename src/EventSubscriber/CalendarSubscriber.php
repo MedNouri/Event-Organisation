@@ -29,6 +29,8 @@ class CalendarSubscriber implements EventSubscriberInterface
 
     public function onCalendarSetData(CalendarEvent $calendar)
     {
+
+
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();
@@ -36,8 +38,8 @@ class CalendarSubscriber implements EventSubscriberInterface
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->eventRepository
-            ->createQueryBuilder('booking')
-            ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->createQueryBuilder('Event')
+            ->where('Event.beginAt BETWEEN :start and :end OR Event.endAt BETWEEN :start and :end')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()
@@ -49,7 +51,7 @@ class CalendarSubscriber implements EventSubscriberInterface
             $bookingEvent = new Event(
                 $booking->getTitle(),
                 $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+                $booking->getEndAt()
             );
 
             /*
@@ -63,15 +65,27 @@ class CalendarSubscriber implements EventSubscriberInterface
                 'backgroundColor' => 'red',
                 'borderColor' => 'red',
             ]);
-            $bookingEvent->addOption(
-                'url',
-                $this->router->generate('booking_show', [
+              $bookingEvent->addOption(
+                 'url',
+                $this->router->generate('event_show', [
                     'id' => $booking->getId(),
-                ])
-            );
+               ])
+               );
 
             // finally, add the event to the CalendarEvent to fill the calendar
             $calendar->addEvent($bookingEvent);
         }
     }
 }
+
+//$calendar->addEvent(new Event(
+   // 'Event 1',
+    //new \DateTime('Tuesday this week'),
+  //  new \DateTime('Wednesdays this week')
+//));
+
+// If the end date is null or not defined, it creates a all day event
+//$calendar->addEvent(new Event(
+// 'All day event',
+//  new \DateTime('Friday this week')
+//));

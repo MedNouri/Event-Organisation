@@ -1,8 +1,11 @@
 {# templates/list/index.html.twig #} {% extends 'base.html.twig' %} {% block
     body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
                 <div class="card bg-light mb-3 mt-3">
                     <div class="card-body">
                         <div class="card-header">List of top technology companies</div>
@@ -22,12 +25,15 @@
                         {% endif %}
                     </div>
                 </div>
+
+
+
                 {% if app.user == null %}
                     <a href="{{ path('app_login') }}" class="btn btn-info">
                         You need to login to see the list 😜😜 >></a
                     >
                 {% endif %}
-            </div>
-        </div>
+
+
     </div>
 {% endblock %}

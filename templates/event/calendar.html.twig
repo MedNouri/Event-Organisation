@@ -2,7 +2,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<a href="{{ path('event_new') }}">Create new booking</a>
 
 <div id="calendar-holder"></div>
 {% endblock %}
@@ -28,7 +27,8 @@
             editable: true,
             eventSources: [
                 {
-                    url: "{{ path('fc_load_events') }}",
+
+                    url: "/fc-load-events",
                     method: "POST",
                     extraParams: {
                         filters: JSON.stringify({})
@@ -50,3 +50,4 @@
     });
 </script>
 {% endblock %}
+

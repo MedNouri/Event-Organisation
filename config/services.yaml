@@ -28,4 +28,4 @@ services:
 
     app_bundle.service.listener:
         class: App\EventSubscriber\CalendarSubscriber
-        # arguments: [name: 'kernel.event_listener', event: 'fc_load_events', method: getSubscribedEvents]
+
