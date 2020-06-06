@@ -11,12 +11,16 @@
            {{ form_row(form.location, {'attr': {'class': 'form-control form-control-user' ,'placeholder':'Location Date'}}) }}
        </div>
    </div>
+   <p>Start Date</p>
    <div class="row">
+
        <div class="col-sm">
 
         {{ form_widget(form.beginAt.date.day, {'attr': {'class': 'form-control form-control-user'}}) }}
        </div>
+
        <div class="col-sm">
+
        {{ form_widget(form.beginAt.date.month, {'attr': {'class': 'form-control form-control-user'}}) }}
                </div>
        <div class="col-sm">
@@ -30,7 +34,9 @@
        </div>
    </div>
    <hr>
+   <p>End Date</p>
    <div class="row">
+
        <div class="col-sm">
 
 

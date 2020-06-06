@@ -42,12 +42,32 @@ class DashobardContoller extends AbstractController
             ->getSingleScalarResult();
 
 
+        $today = new \DateTime();
+        $beginDate=$today->format('Y-m-d');
+        $todayEvent = $repoEvent->createQueryBuilder('a')
+
+            // Filter by some parameter if you want
+             ->where('a.beginAt >= ?1')
+             ->setParameter(1, $today)
+            ->select('count(a.beginAt)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+        $progressEvent = $repoEvent->createQueryBuilder('a')
+
+
+            ->where('a.endAt < ?1')
+            ->setParameter(1, $today)
+            ->select('count(a.beginAt)')
+            ->getQuery()
+            ->getSingleScalarResult();
 
         $twigData = [
             'eventT' => $totalEvents,
             'usersT' => $totalUsers,
-            'todayEvent'  => 50,
-            'progress' => 10
+            'todayEvent'  => $todayEvent,
+            'progress' => $progressEvent
         ];
 
         return $this->render('Dashboard/dashboard.html.twig',$twigData);
