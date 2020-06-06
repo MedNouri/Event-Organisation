@@ -11,17 +11,45 @@
            {{ form_row(form.location, {'attr': {'class': 'form-control form-control-user' ,'placeholder':'Location Date'}}) }}
        </div>
    </div>
-   <div class="form-group">
+   <div class="row">
+       <div class="col-sm">
 
-   {{ form_row(form.endAt, {'attr': {'class': 'form-control form-control-user' ,'type':'date'}}) }}
-   </div>
-       <div class="form-group">
-
-       {{ form_row(form.beginAt, {'attr': {'class': 'form-control form-control-user' ,'placeholder':'Begin Date'}}) }}
+        {{ form_widget(form.beginAt.date.day, {'attr': {'class': 'form-control form-control-user'}}) }}
        </div>
+       <div class="col-sm">
+       {{ form_widget(form.beginAt.date.month, {'attr': {'class': 'form-control form-control-user'}}) }}
+               </div>
+       <div class="col-sm">
+       {{ form_widget(form.beginAt.date.year, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+       {{ form_widget(form.beginAt.time.hour, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+       {{ form_widget(form.beginAt.time.minute, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+   </div>
+   <hr>
+   <div class="row">
+       <div class="col-sm">
 
 
-
+           {{ form_widget(form.endAt.date.day, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+           {{ form_widget(form.endAt.date.month, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+           {{ form_widget(form.endAt.date.year, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+           {{ form_widget(form.endAt.time.hour, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+       <div class="col-sm">
+           {{ form_widget(form.endAt.time.minute, {'attr': {'class': 'form-control form-control-user'}}) }}
+       </div>
+   </div>
+   <hr>
 <button type="submit" class="btn btn-primary btn-user btn-block">{{ button_label|default('Save') }}</button>
 
 

@@ -3,7 +3,15 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ event.title }}</h1>
+       <div class="row">
+           {{ include('event/_delete_form.html.twig') }}
+        <a href="{{ path('event_edit', {'id': event.id}) }}" class="ml-2 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit Event</a>
+
+       </div>
+    </div>
 
     <table class="table">
         <tbody>
@@ -30,9 +38,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('list') }}">back to list</a>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
 
-    {{ include('event/_delete_form.html.twig') }}
+
 {% endblock %}

@@ -61,6 +61,11 @@ class EventController extends AbstractController
             'widget' => 'single_text',
             'html5' => false,
         ));
+        $builder
+            ->add('task', TextType::class)
+            ->add('dueDate', DateType::class)
+            ->add('save', SubmitType::class)
+        ;
 
     }
     /**
@@ -106,4 +111,5 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('list');
     }
+
 }

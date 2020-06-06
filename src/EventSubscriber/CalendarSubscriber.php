@@ -54,16 +54,11 @@ class CalendarSubscriber implements EventSubscriberInterface
                 $booking->getEndAt()
             );
 
-            /*
-             * Add custom options to events
-             *
-             * For more information see: https://fullcalendar.io/docs/event-object
-             * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
-             */
+
 
             $bookingEvent->setOptions([
-                'backgroundColor' => 'red',
-                'borderColor' => 'red',
+                'backgroundColor' => '.bg-gradient-primary',
+                'borderColor' => '.bg-gray-300',
             ]);
               $bookingEvent->addOption(
                  'url',

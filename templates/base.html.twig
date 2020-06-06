@@ -1,21 +1,4 @@
-{# templates/base.html.twig <nav
-        class="navbar navbar-expand-lg navbar-light bg-light"
-        style="height: 70px;"
->
-    <a class="navbar-brand" href="#">Eventy</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-    <ul class="nav navbar-nav navbar-right">
-        {% if app.user %}
-            <li><a class="nav-link" href="{{ path('list') }}">View List</a></li>
-            <li><a class="nav-link" href="{{ path('app_logout') }}">Logout</a></li>
-        {% else %}
-            <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
-            <li>
-                <a class="nav-link" href="{{ path('registration') }}">Register</a>
-            </li>
-        {% endif %}
-    </ul>
-</nav> #}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +46,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ path('indexPage') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -86,7 +69,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Calnder:</h6>
                     <a class="collapse-item" href="{{ path('event_new') }}">Add Event</a>
-                    <a class="collapse-item" href="{{ path('list') }}.">Event Liste</a>
+                    <a class="collapse-item" href="{{ path('list') }}">Event Liste</a>
 
                 </div>
             </div>
@@ -130,7 +113,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -140,37 +123,6 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-
-
-                    <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-envelope fa-fw"></i>
-                            <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
-                        </a>
-                        <!-- Dropdown - Messages -->
-
-                    </li>
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -202,7 +154,11 @@
             {% endif %}
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                {% if app.user == null %}
+                    <a href="{{ path('app_login') }}" class="btn btn-info">
+                        You need to login to see APP 😜😜 >></a
+                    >
+                {% endif %}
 
                 {% block body %}{% endblock %}
 
@@ -216,7 +172,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; EVENTY 2020</span>
+                    <span>Copyright &copy; EVENTY {{ "now"|date('Y') }}</span>
                 </div>
             </div>
         </footer>

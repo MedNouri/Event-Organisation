@@ -38,12 +38,15 @@
                     },
                 },
             ],
+            themeSystem: 'bootstrap',
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
             },
-            plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+            weekNumbers: true,
+            eventLimit: true,
+            plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
             timeZone: 'UTC',
         });
         calendar.render();
