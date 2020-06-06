@@ -21,4 +21,4 @@ security:
                     - App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
-                target: /
+                target: /login
